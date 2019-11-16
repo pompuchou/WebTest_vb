@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WebDataClasses1">
+  <DataContextMoniker Name="/WebDataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="8a9d666a-32f6-4219-ae2c-5f6845d5978f" absoluteBounds="0.75, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/WebDataClasses1DataContext/log_Adm" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5ac4806b-8bfc-4b2b-a5ce-6045e821c793" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33736a56-1da8-4c3f-b59a-0ff46008537f" absoluteBounds="3, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/WebDataClasses1DataContext/log_Err" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6bab00f3-eeb7-4800-a472-4daec778e034" absoluteBounds="3.015, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5c5250e5-b4e6-4d06-b70a-246b44abecc9" absoluteBounds="5.25, 0.75, 2, 2.5401025390625">
+      <DataClassMoniker Name="/WebDataClasses1DataContext/tbl_patients" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e78983cf-5aa4-42c4-85c8-7fd710e6310f" absoluteBounds="5.265, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

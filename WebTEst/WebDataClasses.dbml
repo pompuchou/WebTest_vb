@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CL" Class="WebDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.84\S1;Initial Catalog=CL;User ID=sa;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="WebTEst.My.MySettings" SettingsPropertyName="CLConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_cloudlab_temp" Member="tbl_cloudlab_temp">
+    <Type Name="tbl_cloudlab_temp">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="item_n" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="dep" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="class" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="order_name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="lab_item" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="result" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="range" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudlab" Member="tbl_cloudlab">
+    <Type Name="tbl_cloudlab">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="lab_item" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="result" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p_source" Member="p_source">
+    <Type Name="p_source">
+      <Column Name="source_id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="class" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="source_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudmed_temp" Member="tbl_cloudmed_temp">
+    <Type Name="tbl_cloudmed_temp">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="item_n" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="atc3" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="atc5" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="comp" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="drug_name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="dosing" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="days" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="amt" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="o_source" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudmed" Member="tbl_cloudmed">
+    <Type Name="tbl_cloudmed">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dosing" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="days" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="amt" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="o_source" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudOP" Member="tbl_cloudOP">
+    <Type Name="tbl_cloudOP">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="dep" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="op_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="loca" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="amt" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudDIS" Member="tbl_cloudDIS">
+    <Type Name="tbl_cloudDIS">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dep" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Query" Member="tbl_Query">
+    <Type Name="tbl_Query">
+      <Column Name="Query_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="uid" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="if_cloudmed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="if_schedule" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="if_cloudlab" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="discharge" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="rehab" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="if_TCM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="if_dental" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="if_allergy" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudDEN" Member="tbl_cloudDEN">
+    <Type Name="tbl_cloudDEN">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="op_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="loca" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="amt" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudALL" Member="tbl_cloudALL">
+    <Type Name="tbl_cloudALL">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="remark" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="drug_name" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudREH" Member="tbl_cloudREH">
+    <Type Name="tbl_cloudREH">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="class" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="curegrade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="amt" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="begin_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="end_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="loca" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudTCM_D" Member="tbl_cloudTCM_D">
+    <Type Name="tbl_cloudTCM_D">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NHI_code" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="complex" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="base" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="effect" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="dosing" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="days" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="amt" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="serial" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudTCM_G" Member="tbl_cloudTCM_G">
+    <Type Name="tbl_cloudTCM_G">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="days" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="chronic" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EDATE" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="serial" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudSCH_U" Member="tbl_cloudSCH_U">
+    <Type Name="tbl_cloudSCH_U">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drugname" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SDATE" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STIME" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="clinic" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="t_dose" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="t_DDD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_cloudSCH_R" Member="tbl_cloudSCH_R">
+    <Type Name="tbl_cloudSCH_R">
+      <Column Name="uid" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drug_name" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="YM" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="visit_n" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="clinic_n" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="t_dose" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="t_DDD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="QDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_insert_tbl_cloudmed" Method="sp_insert_tbl_cloudmed">
+    <Parameter Name="QDATE" Parameter="qDATE" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_insert_tbl_cloudlab" Method="sp_insert_tbl_cloudlab">
+    <Parameter Name="QDATE" Parameter="qDATE" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_insert_p_cloudmed" Method="sp_insert_p_cloudmed">
+    <Parameter Name="QDATE" Parameter="qDATE" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_insert_p_cloudlab" Method="sp_insert_p_cloudlab">
+    <Parameter Name="QDATE" Parameter="qDATE" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

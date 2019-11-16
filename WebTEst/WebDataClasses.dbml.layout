@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.625, 12.375" name="WebDataClasses">
+  <DataContextMoniker Name="/WebDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fbeb16d7-04b1-4cab-9bed-f6b5ff31977b" absoluteBounds="6.875, 0.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudlab_temp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6a0012c-fc20-419c-ab99-e076a4dc8deb" absoluteBounds="6.89, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a0c0b83f-692f-4257-ab3f-a54df657688a" absoluteBounds="4.75, 0.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudlab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cbc4f143-2339-4223-9169-db2f29496446" absoluteBounds="4.765, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dd259bae-1a39-4d11-90b5-89d44d450774" absoluteBounds="0.5, 3.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/WebDataClassesDataContext/p_source" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb208d59-7bbb-4ff3-a5cc-e823f7558f94" absoluteBounds="0.515, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="def14384-4710-4b3f-953f-bcc7a1608300" absoluteBounds="2.625, 0.5, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudmed_temp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0121573d-b172-4410-ad2c-91c0a0baa5c3" absoluteBounds="2.64, 0.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b13bdef4-2d3f-4786-84a4-8e8b6d486694" absoluteBounds="0.5, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudmed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5cd1441-574a-4dc5-822e-a3512bc7c087" absoluteBounds="0.515, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="49e66152-8648-40f6-9c82-6f98562674a4" absoluteBounds="2.75, 4.625, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudOP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5589ef00-852b-4591-8ae8-81c721ef85c6" absoluteBounds="2.765, 5.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5e9f56c9-22b6-472e-a94d-3ccde1e440f2" absoluteBounds="0.5, 5.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudDIS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c56b3d8a-96bc-4c81-a589-86d4c3d3152e" absoluteBounds="0.515, 5.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f956e865-38a3-4127-8dc8-a59d3f638af1" absoluteBounds="4.75, 2.625, 2, 3.1170068359375">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_Query" />
+      <nestedChildShapes>
+        <elementListCompartment Id="539b62fb-3bd7-4092-86cb-8eaa45a991a7" absoluteBounds="4.765, 3.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f778a31-91de-4bb4-ba05-278288d32222" absoluteBounds="5.75, 6.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudDEN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3e87d63a-0490-4402-b721-b770f83998f0" absoluteBounds="5.765, 7.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="006e0fd9-c4d0-4581-bbf3-c0296a25320e" absoluteBounds="0.625, 7.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudALL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ee33384-e815-4b9f-aedf-8832c15d3fe4" absoluteBounds="0.64, 7.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3c880812-2ad9-497f-9369-2527b0fdac65" absoluteBounds="3.125, 8, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudREH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a153ffb6-72a9-4258-be92-d224bdc87abb" absoluteBounds="3.14, 8.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="19cab88b-8113-4deb-80ab-e5a140d35d7d" absoluteBounds="8.375, 4.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudTCM_D" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3898d632-37e8-45e7-9c82-1f1386d5fbc9" absoluteBounds="8.39, 5.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9662c11b-27f9-40f2-bc01-f4ca7a6f4d75" absoluteBounds="9.375, 0.75, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudTCM_G" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9f7cbe19-53d4-4519-bc00-41dc3d51e22b" absoluteBounds="9.39, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7785997d-2b46-41d1-ba77-9d1a4d1c35f3" absoluteBounds="8.375, 9.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudSCH_U" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e830d804-d323-4af5-b62f-07dd83273358" absoluteBounds="8.39, 10.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5b880d2d-09db-4898-af4d-e824b3338c56" absoluteBounds="11.375, 4.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/WebDataClassesDataContext/tbl_cloudSCH_R" />
+      <nestedChildShapes>
+        <elementListCompartment Id="60838497-3947-4b0c-9b04-8eaa6b67857e" absoluteBounds="11.39, 5.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

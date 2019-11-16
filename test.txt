@@ -1,0 +1,269 @@
+        ' 先找到UID
+        ' 傳遞UID, 寫檔案, 讀檔案
+        ' 比對是否正確
+        ' 存入資料庫
+        ' 知道有幾個TAB
+        ' 知道有幾頁
+        ' 知道同一個人上次到哪一筆,接續存入
+        ' 身分證字號 放在 ContentPlaceHolder1_lbluserID    -done
+
+        ' 找到身分證字號
+        ' 20191004 夜, 試驗成功
+        If Me.WebBrowser1.Document.GetElementById("ContentPlaceHolder1_lbluserID") Is Nothing Then
+            ' avoid error
+            Exit Sub
+        End If
+        Dim tempUID As String = Me.WebBrowser1.Document.GetElementById("ContentPlaceHolder1_lbluserID").InnerText
+        Me.strUID = MakeSure_UID(tempUID)
+
+        ' 找到有幾個tab
+        ' tab在 ContentPlaceHolder1_tab
+        ' 成功! ContentPlaceHolder1_tab
+        Dim htmlTAB As HtmlElement = WebBrowser1.Document.GetElementById("ContentPlaceHolder1_tab")
+        'Dim n As Integer = htmlTAB.Children.Count
+        'For i = 0 To n - 1
+        '    ' OuterText 表示顯示在外的文字
+        '    MessageBox.Show(htmlTAB.Children(i).OuterText)
+        'Next
+
+        ' how to click?
+        ' 可以用invokeMember("Click"), 但是要按在下一層
+        ' ContentPlaceHolder1_li_0008 沒有用
+        ' ContentPlaceHolder1_a_0008 才有動作
+        ' ContentPlaceHolder1_a_0008 是雲端藥歷
+        ' ContentPlaceHolder1_a_0009 是特定管制藥品用藥資訊
+        ' ContentPlaceHolder1_a_0010 是檢查檢驗紀錄
+        ' ContentPlaceHolder1_a_0060 是檢查檢驗結果
+        ' ContentPlaceHolder1_a_0020 是手術明細紀錄
+        ' ContentPlaceHolder1_a_0070 是出院病歷摘要
+        ' ContentPlaceHolder1_a_0080 是復健醫療
+        ' ContentPlaceHolder1_a_0030 是牙科處置及手術
+        ' ContentPlaceHolder1_a_0110 是CDC預防接種
+
+        ' 有興趣的就是雲端藥歷, 檢查檢驗結果, 跟關懷名單三種
+        ' 檢查是否有雲端藥歷
+        ' 看看有沒有ContentPlaceHolder_a_0008, ContentPlaceHolder_li_0008就可以知道
+        ' 不是每個人都有雲端藥歷的
+        Dim queryTAB As HtmlElement = WebBrowser1.Document.GetElementById("ContentPlaceHolder1_li_0008")
+        If queryTAB IsNot Nothing Then
+            ' Declaration
+            Dim htmlgvList As HtmlElement
+            Dim pg As HtmlElement
+            Dim pg_N As Int16 = 1
+            Dim header_want As String() = {"項次", "來源", "主診斷", "ATC3名稱", "ATC5名稱", "成分名稱", "藥品健保代碼", "藥品名稱",
+                "用法用量", "給藥日數", "藥品用量", "就醫(調劑)日期(住院用藥起日)", "慢連箋領藥日(住院用藥迄日)", "慢連箋原處方醫事機構代碼"}
+            Dim header_order As New List(Of Int16)
+            Dim order_n As Int16 = 0
+            ' 似乎-1會有錯誤
+            '            Dim order_date As Int16 = -1
+            Dim order_date As Int16 = 11
+
+            ' 判斷是否active?
+            ' 如果沒有active, 就要點下去
+            If queryTAB.GetAttribute("className") <> "active" Then
+                queryTAB.Document.GetElementById("ContentPlaceHolder1_a_0008").InvokeMember("Click")
+            End If
+            ' Do something
+            ' 資料在這個iframe
+            ' 這個frame在frames(0)
+            ' 取得gvList
+            htmlgvList = WebBrowser1.Document.Window.Frames(0).Document.GetElementById("ContentPlaceHolder1_gvList")
+            ' 首先先排序
+            ' 找出要的順序
+            order_n = 0
+            For Each th As HtmlElement In htmlgvList.GetElementsByTagName("th")
+                For i = 0 To header_want.Count - 1
+                    If th.InnerText.Replace(vbCrLf, "") = header_want(i) Then
+                        header_order.Add(i)
+                        Exit For
+                    End If
+                Next
+                If th.InnerText = "就醫(調劑)日期(住院用藥起日)" Then
+                    order_date = order_n
+                End If
+                If header_order.Count = order_n Then
+                    header_order.Add(-1)
+                End If
+                order_n += 1
+            Next
+            ' 按下日期排序
+            ' -1的錯誤可能是來自這裡, index符合0-14
+            ' 20191005 完全想通了,就是這裡,原因是一但按過一次innerText會變成"就醫(調劑)日期(住院用藥起日)"加項下箭頭, 如此order_date照原預設是-1
+            ' 重新載入就會好了, 此bug完美解決
+            htmlgvList.GetElementsByTagName("th")(order_date).Children(0).InvokeMember("Click")
+            htmlgvList = WebBrowser1.Document.Window.Frames(0).Document.GetElementById("ContentPlaceHolder1_gvList")
+            ' 找到雲端藥歷有幾頁
+            ' 結果都放在ContentPlaceHolder1_gvList, 都一樣
+            ' 接下來的問題就是有幾頁, 如何切換頁面
+            ' 有幾頁是存在ContentPlaceHolder1_pg_gvList, 如果不存在就只有ㄧ頁
+            ' 2頁就有七個成員:|<, <, 1, 2, >, >|, 第幾頁, 3頁就8個成員, 以此類推
+            pg = htmlgvList.Document.GetElementById("ContentPlaceHolder1_pg_gvList")
+            If pg IsNot Nothing Then
+                ' 有ContentPlaceHolder1_pg_gvList, 表示有多頁
+                pg_N = pg.Children.Count - 5
+            Else
+                ' 沒有ContentPlaceHolder1_pg_gvList, 表示只有ㄧ頁
+                pg_N = 1
+            End If
+            ' How to parsing
+            ' 選取欄位
+
+            ' 讀取第一頁
+            Dim dc As New WebDataClassesDataContext
+            For Each tr As HtmlElement In htmlgvList.GetElementsByTagName("tr")
+                If tr.GetElementsByTagName("td").Count = 0 Then
+                    Continue For
+                End If
+                Dim newCloud As New tbl_cloudmed_temp With {.uid = strUID, .QDATE = Now}
+                order_n = 0
+                For Each td As HtmlElement In tr.GetElementsByTagName("td")
+                    Select Case header_order(order_n)
+                        Case 0  '項次
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.item_n = td.InnerText
+                            End If
+                        Case 1
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.source = td.InnerText
+                            End If
+                        Case 2
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.diagnosis = td.InnerText
+                            End If
+                        Case 3
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.atc3 = td.InnerText
+                            End If
+                        Case 4
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.atc5 = td.InnerText
+                            End If
+                        Case 5
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.comp = td.InnerText
+                            End If
+                        Case 6
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.NHI_code = td.InnerText
+                            End If
+                        Case 7
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.drug_name = td.InnerText
+                            End If
+                        Case 8
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.dosing = td.InnerText
+                            End If
+                        Case 9
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.days = td.InnerText
+                            End If
+                        Case 10
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.amt = td.InnerText
+                            End If
+                        Case 11
+                            If td.InnerText IsNot Nothing Then
+                                Dim temp_d As String() = td.InnerText.Split("/")
+                                newCloud.SDATE = CStr(CInt(temp_d(0)) + 1911) + "/" + temp_d(1) + "/" + temp_d(2)
+                            End If
+                        Case 12
+                            If td.InnerText IsNot Nothing Then
+                                Dim temp_d As String() = td.InnerText.Split("/")
+                                newCloud.EDATE = CStr(CInt(temp_d(0)) + 1911) + "/" + temp_d(1) + "/" + temp_d(2)
+                            End If
+                        Case 13
+                            If td.InnerText IsNot Nothing Then
+                                newCloud.o_source = td.InnerText
+                            End If
+                        Case Else
+                    End Select
+                    order_n += 1
+                Next
+                dc.tbl_cloudmed_temp.InsertOnSubmit(newCloud)
+                dc.SubmitChanges()
+            Next
+
+            ' 讀取第二至最後一頁
+            ' FOR NEXT
+
+            ' 匯入大表
+
+            ' 作紀錄
+        End If
+
+        ' 不是每個人都有關懷名單的
+        queryTAB = WebBrowser1.Document.GetElementById("ContentPlaceHolder1_li_0009")
+        If queryTAB IsNot Nothing Then
+            ' Declaration
+            Dim htmldivResult As HtmlElement
+
+            ' 判斷是否active?
+            ' 如果沒有active, 就要點下去
+            If queryTAB.GetAttribute("className") <> "active" Then
+                queryTAB.Document.GetElementById("ContentPlaceHolder1_a_0009").InvokeMember("Click")
+            End If
+            ' Do something
+            ' 資料在這個iframe
+            ' 這個frame在frames(0)
+            ' 取得gvList
+            htmldivResult = WebBrowser1.Document.Window.Frames(0).Document.GetElementById("ContentPlaceHolder1_divResult")
+            ' 跟人家不一樣,是在divResult
+            ' 不用排序
+
+
+
+        End If
+
+        ' 不是每個人都有檢驗報告的
+        queryTAB = WebBrowser1.Document.GetElementById("ContentPlaceHolder1_li_0060")
+        If queryTAB IsNot Nothing Then
+            ' Declaration
+            Dim htmlgvList As HtmlElement
+            Dim pg As HtmlElement
+            Dim pg_N As Int16 = 1
+
+            ' 判斷是否active?
+            ' 如果沒有active, 就要點下去
+            If queryTAB.GetAttribute("className") <> "active" Then
+                queryTAB.Document.GetElementById("ContentPlaceHolder1_a_0060").InvokeMember("Click")
+            End If
+            ' Do something
+            ' 資料在這個iframe
+            ' 這個frame在frames(0)
+            ' 取得gvList
+            htmlgvList = WebBrowser1.Document.Window.Frames(0).Document.GetElementById("ContentPlaceHolder1_gvList")
+            For Each th As HtmlElement In htmlgvList.GetElementsByTagName("th")
+                If th.InnerText = "報告日期" Then
+                    th.Children(0).InvokeMember("Click")
+                    Exit For
+                End If
+            Next
+            htmlgvList = WebBrowser1.Document.Window.Frames(0).Document.GetElementById("ContentPlaceHolder1_gvList")
+            For Each th As HtmlElement In htmlgvList.GetElementsByTagName("th")
+                If th.InnerText = "報告日期▲" Then
+                    th.Children(0).InvokeMember("Click")
+                    Exit For
+                End If
+            Next
+            htmlgvList = WebBrowser1.Document.Window.Frames(0).Document.GetElementById("ContentPlaceHolder1_gvList")
+            ' 找到雲端藥歷有幾頁
+            ' 結果都放在ContentPlaceHolder1_gvList, 都一樣
+            ' 接下來的問題就是有幾頁, 如何切換頁面
+            ' 有幾頁是存在ContentPlaceHolder1_pg_gvList, 如果不存在就只有ㄧ頁
+            ' 2頁就有七個成員:|<, <, 1, 2, >, >|, 第幾頁, 3頁就8個成員, 以此類推
+            pg = htmlgvList.Document.GetElementById("ContentPlaceHolder1_pg_gvList")
+            If pg IsNot Nothing Then
+                ' 有ContentPlaceHolder1_pg_gvList, 表示有多頁
+                pg_N = pg.Children.Count - 5
+                MessageBox.Show(pg_N)
+            Else
+                ' 沒有ContentPlaceHolder1_pg_gvList, 表示只有ㄧ頁
+                pg_N = 1
+            End If
+            ' 讀取第一頁
+
+            ' 讀取第二至最後一頁
+            ' FOR NEXT
+
+        End If
