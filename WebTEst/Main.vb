@@ -22,11 +22,12 @@ Public Class Main
     Private strUID As String
     Private Property Pageready As Boolean = False
     Public Const MOD_WINKEY As Integer = &H8 'Alt key for hotkey
+    Public Const MOD_CONTROL As Integer = &H2 'Alt key for hotkey
     Public Const WM_HOTKEY As Integer = &H312   'Hotkey
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        RegisterHotKey(Me.Handle, 101, MOD_WINKEY, Keys.G)
-        RegisterHotKey(Me.Handle, 102, MOD_WINKEY, Keys.Y)
+        RegisterHotKey(Me.Handle, 101, MOD_CONTROL, Keys.G)
+        RegisterHotKey(Me.Handle, 102, MOD_CONTROL, Keys.Y)
         RegisterHotKey(Me.Handle, 103, MOD_WINKEY, Keys.H)
         Record_adm("Webkit Log in", "")
     End Sub
